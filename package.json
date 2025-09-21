@@ -156,11 +156,5 @@
     "languages": "js",
     "type": "library",
     "version": "0.54.3"
-  },
-  "dependencies": {
-    "react-native-gesture-handler": "^2.28.0",
-    "react-native-pager-view": "^6.9.1",
-    "react-native-reanimated": "^4.1.0",
-    "react-native-worklets": "^0.5.1"
   }
 }

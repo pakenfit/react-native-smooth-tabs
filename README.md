@@ -353,6 +353,10 @@ This library is optimized for performance:
 1. **Tabs not animating**: Make sure you have properly installed and configured react-native-reanimated
 2. **Gestures not working**: Ensure react-native-gesture-handler is properly set up
 3. **TypeScript errors**: Make sure you have the latest version of the library
+4. **"Tried to register two views with the same name RNGestureHandlerButton"**: This error occurs when there are multiple instances of react-native-gesture-handler. To fix:
+   - Clear Metro cache: `npx react-native start --reset-cache`
+   - Clean install: `rm -rf node_modules && npm install`
+   - If using Expo, don't manually install react-native-gesture-handler as it's included in the SDK
 
 ### Setup Checklist
 
