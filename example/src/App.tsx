@@ -1,9 +1,9 @@
 import { Text, View, StyleSheet } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { Tab } from '@pakenfit/smooth-tabs';
+import { Tab, type TabItemType } from '@pakenfit/smooth-tabs';
 
-const TABS = [
+const TABS: TabItemType[] = [
   { index: 0, title: 'Popular' },
   { index: 1, title: 'Top Rated' },
   { index: 2, title: 'Upcoming' },
@@ -20,7 +20,7 @@ const Content = ({ title }: { title: string }) => {
 };
 export default function App() {
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
+    <GestureHandlerRootView style={styles.root}>
       <SafeAreaProvider>
         <SafeAreaView style={styles.container}>
           <Tab.Provider>
@@ -44,6 +44,9 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     alignItems: 'center',
