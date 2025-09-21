@@ -2,6 +2,10 @@
 
 A smooth, animated tab component for React Native with gesture support and beautiful transitions.
 
+<p align='center'>
+  <img src='./demo/smooth-tabs.gif' width="400">
+</p>
+
 ## Features
 
 - 🎨 **Smooth Animations**: Beautiful spring-based animations powered by Reanimated
