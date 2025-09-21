@@ -3191,6 +3191,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@pakenfit/smooth-tabs-example@workspace:example":
+  version: 0.0.0-use.local
+  resolution: "@pakenfit/smooth-tabs-example@workspace:example"
+  dependencies:
+    "@expo/metro-runtime": ~6.1.2
+    expo: ~54.0.9
+    expo-status-bar: ~3.0.8
+    react: 19.1.0
+    react-dom: 19.1.0
+    react-native: 0.81.4
+    react-native-builder-bob: ^0.40.13
+    react-native-gesture-handler: ^2.28.0
+    react-native-monorepo-config: ^0.1.9
+    react-native-pager-view: ^6.9.1
+    react-native-reanimated: ^4.1.0
+    react-native-safe-area-context: ~5.6.0
+    react-native-web: ~0.21.0
+    react-native-worklets: ^0.5.1
+  languageName: unknown
+  linkType: soft
+
 "@pakenfit/smooth-tabs@workspace:.":
   version: 0.0.0-use.local
   resolution: "@pakenfit/smooth-tabs@workspace:."
@@ -11326,27 +11347,6 @@ __metadata:
   checksum: f346615d5f8f26c0c8459d29c149ea3f66684b8ae79cea6fd48d118d039851a69a92955d67b455d0e7ab46639155c4357ebf58ec1859b2377ee459e2a04b602b
   languageName: node
   linkType: hard
-
-"react-native-smooth-tabs-example@workspace:example":
-  version: 0.0.0-use.local
-  resolution: "react-native-smooth-tabs-example@workspace:example"
-  dependencies:
-    "@expo/metro-runtime": ~6.1.2
-    expo: ~54.0.9
-    expo-status-bar: ~3.0.8
-    react: 19.1.0
-    react-dom: 19.1.0
-    react-native: 0.81.4
-    react-native-builder-bob: ^0.40.13
-    react-native-gesture-handler: ^2.28.0
-    react-native-monorepo-config: ^0.1.9
-    react-native-pager-view: ^6.9.1
-    react-native-reanimated: ^4.1.0
-    react-native-safe-area-context: ~5.6.0
-    react-native-web: ~0.21.0
-    react-native-worklets: ^0.5.1
-  languageName: unknown
-  linkType: soft
 
 "react-native-web@npm:~0.21.0":
   version: 0.21.1
