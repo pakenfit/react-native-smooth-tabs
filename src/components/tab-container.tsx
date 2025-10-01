@@ -112,6 +112,13 @@ export const TabContainer = ({
     }
   }, [activeTab, measures, tabs.length, scrollTrigger]);
 
+  // Reset scroll progress when measures are reinitialized after navigation
+  useEffect(() => {
+    if (measures.length === tabs.length && measures.length > 0) {
+      scrollProgress.value = activeTab;
+    }
+  }, [measures.length, tabs.length, activeTab, scrollProgress]);
+
   const onMeasure = useCallback(
     (layout: LayoutRectangle, index: number) => {
       if (measures?.some((m) => m.index === index)) {
@@ -143,11 +150,20 @@ export const TabContainer = ({
     const nextMeasure = measures[nextTab];
 
     if (!currentMeasure || !nextMeasure) {
+      const activeMeasure = measures[activeTab];
+      if (!activeMeasure) {
+        return {
+          width: 0,
+          height: 0,
+          transform: [{ translateX: 0 }, { scale: scale.value }],
+        };
+      }
+
       return {
-        width: measures[activeTab]?.layout.width ?? 0,
-        height: measures[activeTab]?.layout.height ?? 0,
+        width: activeMeasure.layout.width,
+        height: activeMeasure.layout.height,
         transform: [
-          { translateX: measures[activeTab]?.layout.x ?? 0 },
+          { translateX: activeMeasure.layout.x },
           { scale: scale.value },
         ],
       };

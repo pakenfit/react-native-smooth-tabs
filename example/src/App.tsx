@@ -1,67 +1,79 @@
-import { Text, View, StyleSheet } from 'react-native';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { Tab, type TabItemType } from '@pakenfit/smooth-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Text } from 'react-native';
+import HomeScreen from './screens/HomeScreen';
+import TabsStack from './navigation/TabsStack';
+import SettingsScreen from './screens/SettingsScreen';
 
-const TABS: TabItemType[] = [
-  { index: 0, title: 'Popular' },
-  { index: 1, title: 'Top Rated' },
-  { index: 2, title: 'Upcoming' },
-  { index: 3, title: 'Now Playing' },
-  { index: 4, title: 'Trending' },
-];
+const HomeIcon = ({ color }: { color: string }) => (
+  <Text style={{ color, fontSize: 20 }}>🏠</Text>
+);
 
-const Content = ({ title }: { title: string }) => {
-  return (
-    <View style={styles.content}>
-      <Text style={styles.text}>{title}</Text>
-    </View>
-  );
+const TabsIcon = ({ color }: { color: string }) => (
+  <Text style={{ color, fontSize: 20 }}>📱</Text>
+);
+
+const SettingsIcon = ({ color }: { color: string }) => (
+  <Text style={{ color, fontSize: 20 }}>⚙️</Text>
+);
+
+export type RootTabParamList = {
+  Home: undefined;
+  TabsStack: undefined;
+  Settings: undefined;
 };
+
+const Tab = createBottomTabNavigator<RootTabParamList>();
+
 export default function App() {
   return (
-    <GestureHandlerRootView style={styles.root}>
-      <SafeAreaProvider>
-        <SafeAreaView style={styles.container}>
-          <Tab.Provider>
-            <Tab.Container
-              tabs={TABS}
-              scrollViewContentContainerStyle={
-                styles.scrollViewContentContainer
-              }
-            >
-              <Content title="Popular" />
-              <Content title="Top Rated" />
-              <Content title="Upcoming" />
-              <Content title="Now Playing" />
-              <Content title="Trending" />
-            </Tab.Container>
-          </Tab.Provider>
-        </SafeAreaView>
-      </SafeAreaProvider>
-    </GestureHandlerRootView>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Tab.Navigator
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: 'black',
+            },
+            headerTintColor: 'white',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+            tabBarStyle: {
+              backgroundColor: 'black',
+              borderTopColor: 'rgba(255, 255, 255, 0.1)',
+            },
+            tabBarActiveTintColor: 'white',
+            tabBarInactiveTintColor: 'rgba(255, 255, 255, 0.5)',
+          }}
+        >
+          <Tab.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{
+              title: 'Home',
+              tabBarIcon: ({ color }) => <HomeIcon color={color} />,
+            }}
+          />
+          <Tab.Screen
+            name="TabsStack"
+            component={TabsStack}
+            options={{
+              title: 'Smooth Tabs',
+              headerShown: false,
+              tabBarIcon: ({ color }) => <TabsIcon color={color} />,
+            }}
+          />
+          <Tab.Screen
+            name="Settings"
+            component={SettingsScreen}
+            options={{
+              title: 'Settings',
+              tabBarIcon: ({ color }) => <SettingsIcon color={color} />,
+            }}
+          />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-  },
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'black',
-  },
-  content: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    color: 'white',
-  },
-  scrollViewContentContainer: {
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-  },
-});
